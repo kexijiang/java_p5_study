@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.kxjiang</groupId>
     <artifactId>java_p5_study</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>java_p5_study</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -32,6 +32,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>repository.com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>22.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
