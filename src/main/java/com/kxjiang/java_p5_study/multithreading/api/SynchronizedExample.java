@@ -10,7 +10,9 @@ package com.kxjiang.java_p5_study.multithreading.api;
 public class SynchronizedExample {
     // 同一时间只允许一个线程执行同一个SynchronizedExample类实例的method方法   --实例级别
     public synchronized void method(){
-        System.out.println("普通方法-对象锁");
+        synchronized (this){
+            System.out.println("普通方法-对象锁");
+        }
     }
     // 同一时间只允许一个线程执行同一个SynchronizedExample类的staticMethod方法 -- 类级别
     public synchronized static void staticMethod(){
