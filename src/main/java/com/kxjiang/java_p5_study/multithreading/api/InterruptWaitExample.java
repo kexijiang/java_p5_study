@@ -15,6 +15,7 @@ public class InterruptWaitExample {
                 System.out.println(Thread.currentThread().getName() + "当前时间：" + System.currentTimeMillis());
                 Thread.sleep(1000000000);
             } catch (InterruptedException e) {
+                System.out.println("当前线程interrupt状态->" + Thread.currentThread().isInterrupted());
                 System.out.println(Thread.currentThread().getName() + "线程被唤醒，捕获了InterruptedException，此时时间：" + System.currentTimeMillis());
             }
         },"interrupt-1");
