@@ -15,7 +15,7 @@ public class ThreadFactoryExample implements ThreadFactory {
     private final AtomicInteger threadNumber = new AtomicInteger(1);
     private final String namePrefix;
 
-    ThreadFactoryExample() {
+    public ThreadFactoryExample() {
         SecurityManager s = System.getSecurityManager();
         group = (s != null) ? s.getThreadGroup() :
                 Thread.currentThread().getThreadGroup();
