@@ -1,7 +1,12 @@
 package com.kxjiang.java_p5_study.multithreading.threadpool;
 
+import com.kxjiang.java_p5_study.multithreading.api.RejectedExecutionHandlerExample;
+import com.kxjiang.java_p5_study.multithreading.api.ThreadFactoryExample;
+
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author kxjiang
@@ -11,14 +16,20 @@ import java.util.concurrent.Executors;
 @SuppressWarnings("all")
 public class ThreadPoolExample implements Runnable{
     public static void main(String[] args) {
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
-        ExecutorService executorServiceCached = Executors.newCachedThreadPool();
-        ExecutorService executorServiceSingle = Executors.newSingleThreadExecutor();
-        ExecutorService executorServiceScheduled = Executors.newScheduledThreadPool(2);
-        for (int i = 0; i < 100; i++) {
-            executorService.execute(new ThreadPoolExample());
+//        ExecutorService executorService = Executors.newFixedThreadPool(3);
+//        ExecutorService executorServiceCached = Executors.newCachedThreadPool();
+//        ExecutorService executorServiceSingle = Executors.newSingleThreadExecutor();
+//        ExecutorService executorServiceScheduled = Executors.newScheduledThreadPool(2);
+//        for (int i = 0; i < 100; i++) {
+//            executorService.execute(new ThreadPoolExample());
+//        }
+//        executorService.shutdown();
+
+        ThreadPoolSelf threadPoolSelf = new ThreadPoolSelf(10,10,100, TimeUnit.SECONDS,new ArrayBlockingQueue<>(10),new ThreadFactoryExample(),new RejectedExecutionHandlerExample());
+        for (int i = 0; i < 10; i++) {
+            threadPoolSelf.execute(new ThreadPoolExample());
         }
-        executorService.shutdown();
+        threadPoolSelf.shutdown();
     }
 
     @Override
@@ -28,6 +39,6 @@ public class ThreadPoolExample implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(Thread.currentThread().getName());
+        System.out.println("++++"+Thread.currentThread().getName());
     }
 }
