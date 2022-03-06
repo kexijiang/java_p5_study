@@ -10,7 +10,7 @@ import java.util.concurrent.*;
  * 描述: Callable案例类
  */
 @SuppressWarnings("all")
-public class CallableExample implements Callable {
+public class CallableExample implements Callable<String> {
     @Override
     public String call() throws Exception {
         System.out.println("当前执行任务线程: "+Thread.currentThread().getName());
