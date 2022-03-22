@@ -7,8 +7,8 @@ import java.io.*;
  * @date 2022-03-17 21:22
  */
 public class BufferCopyExample {
-    private static final File fileSource = new File("G:\\chromeDownload\\1福利素材-百款免费可商用字体（密）.zip");
-    private static final File fileTarget = new File("G:\\chromeDownload\\1福利素材-百款免费可商用字体（密）-copy.zip");
+    private static final File fileSource = new File("G:\\chromeDownload\\windows_11_professional_x64_2021.iso");
+    private static final File fileTarget = new File("G:\\chromeDownload\\windows_11_professional_x64_2021-copy.iso");
 
     public void copyWithNormal() throws IOException {
         FileInputStream inputStream = new FileInputStream(fileSource);
@@ -39,13 +39,13 @@ public class BufferCopyExample {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("普通copy耗时："+(System.currentTimeMillis() - start));
+        System.out.println("普通copy耗时："+(System.currentTimeMillis() - start)+" ms");
         start = System.currentTimeMillis();
         try {
             bufferCopyExample.copyWithBuffered();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("缓冲流耗时："+(System.currentTimeMillis() - start));
+        System.out.println("缓冲流耗时："+(System.currentTimeMillis() - start)+" ms");
     }
 }
