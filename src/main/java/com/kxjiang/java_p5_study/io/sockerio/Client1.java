@@ -7,7 +7,7 @@ import java.net.Socket;
  * @author kxjiang
  * @date 2022-03-22 21:44
  */
-public class Client {
+public class Client1 {
     public static void main(String[] args) {
         try {
             // 获取socket输出流
@@ -15,7 +15,7 @@ public class Client {
             OutputStream outputStream = socket.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream));
             // 写出数据
-            writer.write("hello,world-0!\n");
+            writer.write("hello,world-1!\n");
             writer.flush();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
