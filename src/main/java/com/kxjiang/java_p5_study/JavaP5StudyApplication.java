@@ -9,5 +9,4 @@ public class JavaP5StudyApplication {
     public static void main(String[] args) {
         SpringApplication.run(JavaP5StudyApplication.class, args);
     }
-
 }
