@@ -45,6 +45,9 @@ public class NIOSelectorServer {
             }
         }catch (IOException e){
             e.printStackTrace();
+        }finally{
+            serverSocketChannel.close();
+            selector.close();
         }
     }
     private static void handleAcceptable(SelectionKey key) throws IOException {
