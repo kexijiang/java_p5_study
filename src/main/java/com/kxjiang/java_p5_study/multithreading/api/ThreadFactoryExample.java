@@ -4,9 +4,7 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @author kxjiang
- * 时间: 2022/1/19
- * 描述: 线程工厂，可以设置一些线程的参数，例如名称，是否守护线程等
+ * @author kxjiang 时间: 2022/1/19 描述: 线程工厂，可以设置一些线程的参数，例如名称，是否守护线程等
  */
 public class ThreadFactoryExample implements ThreadFactory {
 
@@ -17,17 +15,13 @@ public class ThreadFactoryExample implements ThreadFactory {
 
     public ThreadFactoryExample() {
         SecurityManager s = System.getSecurityManager();
-        group = (s != null) ? s.getThreadGroup() :
-                Thread.currentThread().getThreadGroup();
-        namePrefix = "kxjiang-pool-" +
-                POOL_NUMBER.getAndIncrement() +
-                "-thread-";
+        group = (s != null) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();
+        namePrefix = "kxjiang-pool-" + POOL_NUMBER.getAndIncrement() + "-thread-";
     }
+
     @Override
     public Thread newThread(Runnable r) {
-        Thread t = new Thread(group, r,
-                namePrefix + threadNumber.getAndIncrement(),
-                0);
+        Thread t = new Thread(group, r, namePrefix + threadNumber.getAndIncrement(), 0);
         if (t.isDaemon()) {
             t.setDaemon(false);
         }

@@ -12,9 +12,9 @@ public class BufferedExample {
         BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream("E://txt.txt"));
         int len = 0;
         byte[] bys = new byte[1024];
-        while((len = bufferedInputStream.read(bys))!=-1){
-            System.out.println(new String(bys,0,len));
-            bufferedOutputStream.write(bys,0,len);
+        while ((len = bufferedInputStream.read(bys)) != -1) {
+            System.out.println(new String(bys, 0, len));
+            bufferedOutputStream.write(bys, 0, len);
             bufferedOutputStream.flush();
         }
     }

@@ -11,7 +11,7 @@ import java.nio.channels.FileChannel;
  */
 public class NIOReadExample {
     public static void main(String[] args) {
-        try(FileInputStream inputStream = new FileInputStream("E:\\test.txt")){
+        try (FileInputStream inputStream = new FileInputStream("E:\\test.txt")) {
             FileChannel fileChannel = inputStream.getChannel();
             // 一次读取字节数
             ByteBuffer byteBuffer = ByteBuffer.allocate(10);
@@ -20,7 +20,7 @@ public class NIOReadExample {
 
             System.out.println(new String(byteBuffer.array()));
 
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

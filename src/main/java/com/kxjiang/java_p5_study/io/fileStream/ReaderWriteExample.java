@@ -10,15 +10,15 @@ import java.io.IOException;
  */
 public class ReaderWriteExample {
     public static void main(String[] args) {
-        try(FileReader reader = new FileReader("E:\\mic.txt");
-            FileWriter writer = new FileWriter("E:\\mic-copy.txt")){
+        try (FileReader reader = new FileReader("E:\\mic.txt");
+            FileWriter writer = new FileWriter("E:\\mic-copy.txt")) {
             int i = 0;
             char[] by = new char[1024];
-            while((i=reader.read(by))!=-1){
-                System.out.println(new String(by,0,i));
-                writer.write(by,0,i);
+            while ((i = reader.read(by)) != -1) {
+                System.out.println(new String(by, 0, i));
+                writer.write(by, 0, i);
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

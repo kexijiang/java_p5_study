@@ -9,6 +9,7 @@ public class Z字形变换 {
     public static void main(String[] args) {
 
     }
+
     public String convert(String s, int numRows) {
         int n = s.length(), r = numRows;
         if (r == 1 || r >= n) {

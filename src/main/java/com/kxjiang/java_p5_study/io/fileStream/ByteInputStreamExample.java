@@ -20,8 +20,8 @@ public class ByteInputStreamExample {
         // 缓冲区 1024字节，1kb
         byte[] buffer = new byte[1024];
 
-        while((len = inputStream.read(buffer))!=-1){
-            fileOutputStream.write(buffer,0,len);// 把inputStream的输入字节写出到指定的目录下
+        while ((len = inputStream.read(buffer)) != -1) {
+            fileOutputStream.write(buffer, 0, len);// 把inputStream的输入字节写出到指定的目录下
         }
         inputStream.close();
         fileOutputStream.close();

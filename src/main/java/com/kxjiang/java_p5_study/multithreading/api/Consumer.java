@@ -9,7 +9,7 @@ import java.util.Queue;
  * @date 2022-01-03 21:31
  */
 @SuppressWarnings("all")
-public class Consumer implements Runnable{
+public class Consumer implements Runnable {
 
     private final int size;
     private final Queue<String> bags;
@@ -22,10 +22,10 @@ public class Consumer implements Runnable{
     @Override
     public void run() {
         int i = 0;
-        while(true){
+        while (true) {
             i++;
-            synchronized (bags){
-                while (bags.isEmpty()){
+            synchronized (bags) {
+                while (bags.isEmpty()) {
                     System.out.println("bags为空！");
                     try {
                         bags.wait();

@@ -8,14 +8,15 @@ package com.kxjiang.java_p5_study.multithreading.api;
  */
 public class InterruptWhileExample {
     private static int i;
+
     public static void main(String[] args) {
-        Thread thread = new Thread(()->{
+        Thread thread = new Thread(() -> {
             // jvm中每个线程都维护了一个interrupt属性，isInterrupted方法默认值未false
-            while (!Thread.currentThread().isInterrupted()){
+            while (!Thread.currentThread().isInterrupted()) {
                 i++;
-                System.out.println(Thread.currentThread().getName()+" 当前计数：" + i);
+                System.out.println(Thread.currentThread().getName() + " 当前计数：" + i);
             }
-        },"interrupt-1");
+        }, "interrupt-1");
         try {
             thread.start();
             Thread.sleep(1);

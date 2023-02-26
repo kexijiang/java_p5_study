@@ -15,30 +15,30 @@ public class IoStreamSourceExample {
             FileInputStream fileInputStream = null;
             fileInputStream = new FileInputStream("E:\\test.txt");
             int i = 0;
-//            i = fileInputStream.read(); // 每次读取一个字节
-//            System.out.println((char) i); //ASCII码
+            // i = fileInputStream.read(); // 每次读取一个字节
+            // System.out.println((char) i); //ASCII码
             // 文件结束的条件是字节为-1
-            while((i=fileInputStream.read())!=-1){
-                System.out.print((char) i);
+            while ((i = fileInputStream.read()) != -1) {
+                System.out.print((char)i);
             }
-        }catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         // 内存io
         String str = "hello world.";
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(str.getBytes(StandardCharsets.UTF_8));
         int i = 0;
-//            i = fileInputStream.read(); // 每次读取一个字节
-//            System.out.println((char) i); //ASCII码
+        // i = fileInputStream.read(); // 每次读取一个字节
+        // System.out.println((char) i); //ASCII码
         // 文件结束的条件是字节为-1
-        while((i=byteArrayInputStream.read())!=-1){
-            System.out.print((char) i);
+        while ((i = byteArrayInputStream.read()) != -1) {
+            System.out.print((char)i);
         }
         // 键盘io
         InputStream inputStream = System.in;
         int jpi = 0;
-        while((jpi=inputStream.read())!=-1){
-            System.out.print((char) jpi);
+        while ((jpi = inputStream.read()) != -1) {
+            System.out.print((char)jpi);
         }
         // 网络IO
         Socket socket = null;

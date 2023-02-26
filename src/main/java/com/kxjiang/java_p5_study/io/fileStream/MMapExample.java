@@ -12,12 +12,14 @@ import java.nio.file.StandardOpenOption;
  */
 public class MMapExample {
     public static void main(String[] args) throws IOException {
-        FileChannel inChannel = FileChannel.open(Paths.get("G:\\chromeDownload\\windows_11_professional_x64_2021.iso"), StandardOpenOption.READ);
-        FileChannel outChannel = FileChannel.open(Paths.get("G:\\chromeDownload\\windows_11_professional_x64_2021-0copy.iso")
-                ,StandardOpenOption.READ, StandardOpenOption.CREATE,StandardOpenOption.WRITE);
+        FileChannel inChannel = FileChannel.open(Paths.get("G:\\chromeDownload\\windows_11_professional_x64_2021.iso"),
+            StandardOpenOption.READ);
+        FileChannel outChannel =
+            FileChannel.open(Paths.get("G:\\chromeDownload\\windows_11_professional_x64_2021-0copy.iso"),
+                StandardOpenOption.READ, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
         long start = System.currentTimeMillis();
-        MappedByteBuffer inMappedByteBuffer = inChannel.map(FileChannel.MapMode.READ_ONLY,0,inChannel.size());
-        MappedByteBuffer outMappedByteBuffer = outChannel.map(FileChannel.MapMode.READ_WRITE,0,inChannel.size());
+        MappedByteBuffer inMappedByteBuffer = inChannel.map(FileChannel.MapMode.READ_ONLY, 0, inChannel.size());
+        MappedByteBuffer outMappedByteBuffer = outChannel.map(FileChannel.MapMode.READ_WRITE, 0, inChannel.size());
         byte[] bytes = new byte[inMappedByteBuffer.limit()];
 
         inMappedByteBuffer.get(bytes);
@@ -25,6 +27,6 @@ public class MMapExample {
         inChannel.close();
         outChannel.close();
 
-        System.out.println("拷贝用时："+(System.currentTimeMillis()-start)+" ms");
+        System.out.println("拷贝用时：" + (System.currentTimeMillis() - start) + " ms");
     }
 }

@@ -13,17 +13,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 @SuppressWarnings("all")
 public class AtomicExample {
 
-    private static final ExecutorService executorService =
-            new ThreadPoolExecutor(1,1,
-                    1000, TimeUnit.MINUTES,
-                    new ArrayBlockingQueue<>(10),
-                    new ThreadFactoryExample(),new RejectedExecutionHandlerExample());
+    private static final ExecutorService executorService = new ThreadPoolExecutor(1, 1, 1000, TimeUnit.MINUTES,
+        new ArrayBlockingQueue<>(10), new ThreadFactoryExample(), new RejectedExecutionHandlerExample());
 
     private static final AtomicInteger COUNT = new AtomicInteger(0);
-    public synchronized static void incr(){
+
+    public synchronized static void incr() {
         try {
             Thread.sleep(1);
-        }catch (InterruptedException e){
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
         COUNT.incrementAndGet();
@@ -34,6 +32,6 @@ public class AtomicExample {
             executorService.execute(AtomicExample::incr);
         }
         Thread.sleep(4000);
-        System.out.println("result:"+COUNT.get());
+        System.out.println("result:" + COUNT.get());
     }
 }

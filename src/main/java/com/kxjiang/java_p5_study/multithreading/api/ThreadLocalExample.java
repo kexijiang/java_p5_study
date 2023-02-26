@@ -12,12 +12,12 @@ public class ThreadLocalExample {
     public static void main(String[] args) {
         Thread[] threads = new Thread[5];
         for (int i = 0; i < 5; i++) {
-            threads[i] = new Thread(()->{
+            threads[i] = new Thread(() -> {
                 int num = localNum.get();
-                num +=5;
+                num += 5;
                 localNum.set(num);
-                System.out.println(Thread.currentThread().getName()+"->"+num);
-            },"Thread-local-testThread-"+i);
+                System.out.println(Thread.currentThread().getName() + "->" + num);
+            }, "Thread-local-testThread-" + i);
         }
         Arrays.stream(threads).forEach(Thread::start);
     }

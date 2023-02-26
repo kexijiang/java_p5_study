@@ -11,24 +11,24 @@ import java.io.InputStreamReader;
  */
 public class FileExample {
     public static void main(String[] args) {
-        try(InputStreamReader reader= new InputStreamReader(System.in);
-            BufferedReader bufferedReader = new BufferedReader(reader)){
+        try (InputStreamReader reader = new InputStreamReader(System.in);
+            BufferedReader bufferedReader = new BufferedReader(reader)) {
             String path = bufferedReader.readLine();
             File file = new File(path);
-            if(file.isDirectory() && file.exists()){
+            if (file.isDirectory() && file.exists()) {
                 // 遍历这个目录下的所有子目录
                 fileList(file);
-            }else{
+            } else {
                 System.out.println("文件路径输入错误。");
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static void fileList(File filePath){
+    private static void fileList(File filePath) {
         File[] files = filePath.listFiles();
-        if(files!=null){
+        if (files != null) {
             for (File file : files) {
                 if (file.isFile()) {
                     System.out.println(file.getName());

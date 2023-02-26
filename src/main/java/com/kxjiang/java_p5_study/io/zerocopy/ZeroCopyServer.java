@@ -1,7 +1,5 @@
 package com.kxjiang.java_p5_study.io.zerocopy;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -20,20 +18,20 @@ public class ZeroCopyServer {
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
         serverSocketChannel.socket().bind(new InetSocketAddress(8080));
         FileChannel fileChannel = new FileOutputStream("G:/文件.zip").getChannel();
-        try{
+        try {
             SocketChannel socketChannel = serverSocketChannel.accept();
             ByteBuffer buffer = ByteBuffer.allocate(1024);
             int r = 0;
-            while(r!=-1){
+            while (r != -1) {
                 r = socketChannel.read(buffer);
                 buffer.flip();
                 fileChannel.write(buffer);
                 buffer.clear();
             }
 
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             serverSocketChannel.close();
             fileChannel.close();
         }

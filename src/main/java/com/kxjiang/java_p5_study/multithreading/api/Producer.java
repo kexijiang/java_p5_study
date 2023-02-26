@@ -1,7 +1,6 @@
 package com.kxjiang.java_p5_study.multithreading.api;
 
 import java.util.Queue;
-import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * 生产者消费者模型中的生产者案例类
@@ -10,7 +9,7 @@ import java.util.concurrent.ArrayBlockingQueue;
  * @date 2022-01-03 21:31
  */
 @SuppressWarnings("all")
-public class Producer implements Runnable{
+public class Producer implements Runnable {
 
     private final int size;
     private final Queue<String> bags;
@@ -23,10 +22,10 @@ public class Producer implements Runnable{
     @Override
     public void run() {
         int i = 0;
-        while(true){
+        while (true) {
             i++;
-            synchronized (bags){
-                while (bags.size()==size){
+            synchronized (bags) {
+                while (bags.size() == size) {
                     // 消费队列满了，进行阻塞操作
                     try {
                         bags.wait();

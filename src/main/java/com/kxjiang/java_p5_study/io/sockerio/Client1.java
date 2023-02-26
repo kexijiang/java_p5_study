@@ -11,7 +11,7 @@ public class Client1 {
     public static void main(String[] args) {
         try {
             // 获取socket输出流
-            Socket socket = new Socket("localhost",8080);
+            Socket socket = new Socket("localhost", 8080);
             OutputStream outputStream = socket.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream));
             // 写出数据
@@ -20,7 +20,7 @@ public class Client1 {
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String serverStr = reader.readLine();
-            System.out.println("接受到服务端消息："+serverStr);
+            System.out.println("接受到服务端消息：" + serverStr);
         } catch (IOException e) {
             e.printStackTrace();
         }

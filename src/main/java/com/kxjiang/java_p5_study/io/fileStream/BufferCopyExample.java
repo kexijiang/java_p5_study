@@ -15,18 +15,19 @@ public class BufferCopyExample {
         FileOutputStream outputStream = new FileOutputStream(fileTarget);
         int len = 0;
         byte[] bytes = new byte[8096];
-        while ((len = inputStream.read(bytes))!=-1){
-            outputStream.write(bytes,0,len);
+        while ((len = inputStream.read(bytes)) != -1) {
+            outputStream.write(bytes, 0, len);
             outputStream.flush();
         }
     }
+
     public void copyWithBuffered() throws IOException {
         BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(fileSource));
         FileOutputStream outputStream = new FileOutputStream(fileTarget);
         BufferedOutputStream out = new BufferedOutputStream(outputStream);
         int len = 0;
         byte[] bys = new byte[1024];
-        while ((len = inputStream.read(bys))!=-1){
+        while ((len = inputStream.read(bys)) != -1) {
             out.write(bys);
         }
     }
@@ -39,13 +40,13 @@ public class BufferCopyExample {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("普通copy耗时："+(System.currentTimeMillis() - start)+" ms");
+        System.out.println("普通copy耗时：" + (System.currentTimeMillis() - start) + " ms");
         start = System.currentTimeMillis();
         try {
             bufferCopyExample.copyWithBuffered();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("缓冲流耗时："+(System.currentTimeMillis() - start)+" ms");
+        System.out.println("缓冲流耗时：" + (System.currentTimeMillis() - start) + " ms");
     }
 }

@@ -14,17 +14,17 @@ import java.nio.charset.StandardCharsets;
 @SuppressWarnings("all")
 public class NIOSocketServer01Example {
     public static void main(String[] args) {
-        try{
+        try {
             ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
             // 设置为非阻塞
             serverSocketChannel.configureBlocking(false);
             serverSocketChannel.socket().bind(new InetSocketAddress(8080));
-            while(true){
+            while (true) {
                 SocketChannel socketChannel = serverSocketChannel.accept();// 如果不设置非阻塞 默认还是阻塞的
-                if(socketChannel!=null){
+                if (socketChannel != null) {
                     ByteBuffer buffer = ByteBuffer.allocate(1024);
                     socketChannel.read(buffer);
-                    System.out.println(new String(buffer.array(),0,buffer.position()));
+                    System.out.println(new String(buffer.array(), 0, buffer.position()));
                     buffer.flip();
                     // 睡眠10秒，在写回数据
                     Thread.sleep(10000);
@@ -34,13 +34,13 @@ public class NIOSocketServer01Example {
                     bf.put("你好，我是服务端，我已经收到你的消息！".getBytes(StandardCharsets.UTF_8));
                     buffer.flip();
                     socketChannel.write(bf);
-                }else{
+                } else {
                     Thread.sleep(1000);
                     System.out.println("没有客户端连接过来");
                 }
 
             }
-        }catch (IOException | InterruptedException e){
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }

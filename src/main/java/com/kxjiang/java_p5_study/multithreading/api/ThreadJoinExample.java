@@ -9,13 +9,14 @@ package com.kxjiang.java_p5_study.multithreading.api;
 public class ThreadJoinExample {
     public static int a = 0;
     public static int b = 0;
+
     public static void main(String[] args) {
-        Thread thread_1 = new Thread(()->{
+        Thread thread_1 = new Thread(() -> {
             a = 1;
             b = 2;
-        },"thread-1");
+        }, "thread-1");
 
-        Thread thread_2 = new Thread(()-> a = b + 2,"thread-2");
+        Thread thread_2 = new Thread(() -> a = b + 2, "thread-2");
 
         thread_1.start();
         try {

@@ -8,11 +8,11 @@ import java.util.concurrent.CountDownLatch;
  */
 @SuppressWarnings("all")
 public class CountDownLatchExample {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         CountDownLatch countDownLatch = new CountDownLatch(3);
-        new Thread((countDownLatch::countDown),"countDownLatch-1").start();
-        new Thread((countDownLatch::countDown),"countDownLatch-2").start();
-        new Thread((countDownLatch::countDown),"countDownLatch-3").start();
+        new Thread((countDownLatch::countDown), "countDownLatch-1").start();
+        new Thread((countDownLatch::countDown), "countDownLatch-2").start();
+        new Thread((countDownLatch::countDown), "countDownLatch-3").start();
         try {
             countDownLatch.await();
         } catch (InterruptedException e) {

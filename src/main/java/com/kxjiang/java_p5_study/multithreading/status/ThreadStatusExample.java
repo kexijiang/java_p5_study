@@ -10,20 +10,20 @@ import java.util.concurrent.TimeUnit;
 public class ThreadStatusExample {
     public static void main(String[] args) {
         // TIME_WAITING
-        new Thread(()->{
-            while (true){
+        new Thread(() -> {
+            while (true) {
                 try {
                     TimeUnit.SECONDS.sleep(100);
-                }catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-        },"thread-status-time_waiting").start();
+        }, "thread-status-time_waiting").start();
 
         // WAITING
-        new Thread(()->{
-            while(true){
-                synchronized (ThreadStatusExample.class){
+        new Thread(() -> {
+            while (true) {
+                synchronized (ThreadStatusExample.class) {
                     try {
                         ThreadStatusExample.class.wait();
                     } catch (InterruptedException e) {
@@ -31,17 +31,18 @@ public class ThreadStatusExample {
                     }
                 }
             }
-        },"thread-status-waiting").start();
+        }, "thread-status-waiting").start();
         // BLOCKED
-        new Thread(new BlockedDemo(),"thread-status-blocked-1").start();
-        new Thread(new BlockedDemo(),"thread-status-blocked-2").start();
+        new Thread(new BlockedDemo(), "thread-status-blocked-1").start();
+        new Thread(new BlockedDemo(), "thread-status-blocked-2").start();
     }
+
     @SuppressWarnings("all")
-    static class BlockedDemo extends Thread{
+    static class BlockedDemo extends Thread {
         @Override
         public void run() {
-            synchronized (BlockedDemo.class){
-                while (true){
+            synchronized (BlockedDemo.class) {
+                while (true) {
                     try {
                         TimeUnit.SECONDS.sleep(100);
                     } catch (InterruptedException e) {

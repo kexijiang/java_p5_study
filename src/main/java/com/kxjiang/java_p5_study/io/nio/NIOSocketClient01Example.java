@@ -13,12 +13,12 @@ import java.nio.charset.StandardCharsets;
 @SuppressWarnings("all")
 public class NIOSocketClient01Example {
     public static void main(String[] args) {
-        try{
+        try {
             SocketChannel socketChannel = SocketChannel.open();
             // 设置为非阻塞
             socketChannel.configureBlocking(false);
             socketChannel.connect(new InetSocketAddress(8080));
-            if(socketChannel.isConnectionPending()){
+            if (socketChannel.isConnectionPending()) {
                 socketChannel.finishConnect();
             }
             ByteBuffer buffer = ByteBuffer.allocate(1024);
@@ -29,18 +29,17 @@ public class NIOSocketClient01Example {
             // 进行读取
             buffer.flip();
             ByteBuffer bf = ByteBuffer.allocate(1024);
-            while(true){
+            while (true) {
                 int r = socketChannel.read(bf);
-                if(r>0){
-                    System.out.println("收到服务端消息："+new String(bf.array(),0,bf.position()));
-                }else{
+                if (r > 0) {
+                    System.out.println("收到服务端消息：" + new String(bf.array(), 0, bf.position()));
+                } else {
                     Thread.sleep(1000);
                     System.out.println("服务端还未有消息返回！");
                 }
             }
 
-
-        }catch (IOException | InterruptedException e){
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }

@@ -13,9 +13,9 @@ public class WaitNotifyExample {
     public static void main(String[] args) {
         Queue<String> bags = new LinkedList<>();
         int size = 5;
-        Producer producer = new Producer(size,bags);
-        Consumer consumer = new Consumer(size,bags);
-        new Thread(producer,"producer").start();
-        new Thread(consumer,"consumer").start();
+        Producer producer = new Producer(size, bags);
+        Consumer consumer = new Consumer(size, bags);
+        new Thread(producer, "producer").start();
+        new Thread(consumer, "consumer").start();
     }
 }

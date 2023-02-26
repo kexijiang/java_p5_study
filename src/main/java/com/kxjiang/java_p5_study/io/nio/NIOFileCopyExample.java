@@ -12,7 +12,7 @@ import java.nio.channels.FileChannel;
  */
 public class NIOFileCopyExample {
     public static void main(String[] args) {
-        try{
+        try {
             long start = System.currentTimeMillis();
             FileInputStream fis = new FileInputStream("E:\\test.txt");
             FileOutputStream fos = new FileOutputStream("E:\\test-copy.txt");
@@ -22,17 +22,17 @@ public class NIOFileCopyExample {
 
             // 初始化一个缓冲区
             ByteBuffer buffer = ByteBuffer.allocate(1024);
-            while(fin.read(buffer)!=-1){
+            while (fin.read(buffer) != -1) {
                 // 从读转化为写
                 buffer.flip();
                 // 从缓冲区写入到通道
                 fout.write(buffer);
-                //清空缓冲区
+                // 清空缓冲区
                 buffer.clear();
             }
 
-            System.out.println("NIO复制文件用时："+(System.currentTimeMillis()-start)+" ms");
-        }catch (IOException e){
+            System.out.println("NIO复制文件用时：" + (System.currentTimeMillis() - start) + " ms");
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

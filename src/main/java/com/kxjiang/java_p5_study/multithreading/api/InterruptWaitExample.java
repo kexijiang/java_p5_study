@@ -8,7 +8,7 @@ package com.kxjiang.java_p5_study.multithreading.api;
  */
 public class InterruptWaitExample {
     public static void main(String[] args) {
-        Thread thread = new Thread(()->{
+        Thread thread = new Thread(() -> {
             // 如果该线程始终处于阻塞状态，interrupt方法可以唤醒处于阻塞的线程并抛出一个InterruptedException出来
             // 此时线程中的代码即可捕获该异常，做出自己的处理，或者执行其他代码，或者什么都不执行，就结束线程
             try {
@@ -16,9 +16,10 @@ public class InterruptWaitExample {
                 Thread.sleep(1000000000);
             } catch (InterruptedException e) {
                 System.out.println("当前线程interrupt状态->" + Thread.currentThread().isInterrupted());
-                System.out.println(Thread.currentThread().getName() + "线程被唤醒，捕获了InterruptedException，此时时间：" + System.currentTimeMillis());
+                System.out.println(Thread.currentThread().getName() + "线程被唤醒，捕获了InterruptedException，此时时间："
+                    + System.currentTimeMillis());
             }
-        },"interrupt-1");
+        }, "interrupt-1");
         try {
             thread.start();
             Thread.sleep(1);

@@ -1,7 +1,5 @@
 package com.kxjiang.java_p5_study.multithreading.juc;
 
-import lombok.SneakyThrows;
-
 import java.util.concurrent.Semaphore;
 
 /**
@@ -14,10 +12,11 @@ public class SemaphoreExample {
         // 当前可以获得的最大许可数量是5个
         Semaphore semaphore = new Semaphore(5);
         for (int i = 0; i < 10; i++) {
-            new Thread(new Car(i+1,semaphore)).start();
+            new Thread(new Car(i + 1, semaphore)).start();
         }
     }
-    public static class Car extends Thread{
+
+    public static class Car extends Thread {
         private int num;
         private Semaphore semaphore;
 
@@ -30,9 +29,9 @@ public class SemaphoreExample {
         public void run() {
             try {
                 semaphore.acquire();
-                System.out.println("第" +num+ "辆车来了！");
+                System.out.println("第" + num + "辆车来了！");
                 Thread.currentThread().sleep(2000);
-                System.out.println("第" +num+ "辆车走了！");
+                System.out.println("第" + num + "辆车走了！");
                 semaphore.release();
             } catch (InterruptedException e) {
                 e.printStackTrace();
