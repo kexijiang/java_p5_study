@@ -2,7 +2,6 @@ package com.kxjiang.java_p5_study.multithreading.juc;
 
 import lombok.AllArgsConstructor;
 
-import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -25,8 +24,8 @@ public class ConditionExample {
     @AllArgsConstructor
     public static class ConditionExampleAwait extends Thread{
 
-        private Lock lock;
-        private Condition condition;
+        private final Lock lock;
+        private final Condition condition;
 
         @Override
         public void run() {
@@ -46,8 +45,8 @@ public class ConditionExample {
     @AllArgsConstructor
     public static class ConditionExampleSignal extends Thread{
 
-        private Lock lock;
-        private Condition condition;
+        private final Lock lock;
+        private final Condition condition;
 
         @Override
         public void run() {

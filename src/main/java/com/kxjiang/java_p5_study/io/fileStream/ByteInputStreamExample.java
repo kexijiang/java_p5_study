@@ -1,4 +1,4 @@
-package com.kxjiang.java_p5_study.io;
+package com.kxjiang.java_p5_study.io.fileStream;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,5 +1,7 @@
 package com.kxjiang.java_p5_study.multithreading.threadpool;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.*;
 
 /**
@@ -9,7 +11,6 @@ import java.util.concurrent.*;
 public class ThreadPoolSelf extends ThreadPoolExecutor {
 
     private static long startTime;
-    private static long endTime;
 
     public ThreadPoolSelf(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue, ThreadFactory threadFactory, RejectedExecutionHandler handler) {
         super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, threadFactory, handler);
@@ -27,7 +28,8 @@ public class ThreadPoolSelf extends ThreadPoolExecutor {
         System.out.println("核心线程数："+this.getCorePoolSize());
         System.out.println("正在执行的线程任务数："+this.getActiveCount());
         System.out.println("已经执行完毕的线程任务数："+this.getCompletedTaskCount());
-        endTime = System.currentTimeMillis();
+        long endTime = System.currentTimeMillis();
         System.out.println("任务耗时："+ (endTime - startTime));
+        Map<Integer,Integer> map = new HashMap<>(2);
     }
 }
