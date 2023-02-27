@@ -1,5 +1,6 @@
 package com.kxjiang.java_p5_study.spring_study.spring_xml;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -8,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Data
 @Slf4j
+@AllArgsConstructor
 public class User {
 
     private String name;
@@ -16,4 +18,9 @@ public class User {
     public User() {
         log.info("user Loading completed...");
     }
+
+    public void init() {
+        name = "kxj";
+        age = 18;
+    };
 }

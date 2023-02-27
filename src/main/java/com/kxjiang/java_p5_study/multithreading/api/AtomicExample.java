@@ -10,7 +10,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author kxjiang
  * @date 2022-01-18 23:05
  */
-@SuppressWarnings("all")
 public class AtomicExample {
 
     private static final ExecutorService executorService = new ThreadPoolExecutor(1, 1, 1000, TimeUnit.MINUTES,

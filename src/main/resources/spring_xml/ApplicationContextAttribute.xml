@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user" class="com.kxjiang.java_p5_study.spring_study.spring_xml.User" primary="true">
+        <!--通过构造方法赋值，指定属性名赋值-->
+        <constructor-arg name="name" value="kxj_1"/>
+        <constructor-arg name="age" value="26"/>
+    </bean>
+    <bean id="user1" class="com.kxjiang.java_p5_study.spring_study.spring_xml.User" primary="true">
+        <!--通过构造方法赋值，指定参数顺序赋值-->
+        <constructor-arg index="0" value="kxj_2"/>
+        <constructor-arg index="1" value="26"/>
+    </bean>
+
+    <bean id="user2" class="com.kxjiang.java_p5_study.spring_study.spring_xml.User" primary="true">
+        <!--通过setter方法设值注入，对应的属性必须提供setter方法-->
+        <property name="name" value="kxj_3"/>
+        <property name="age" value="26"/>
+    </bean>
+</beans>

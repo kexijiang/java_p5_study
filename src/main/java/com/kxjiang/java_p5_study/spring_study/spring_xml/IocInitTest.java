@@ -15,11 +15,66 @@ import lombok.extern.slf4j.Slf4j;
 public class IocInitTest {
 
     @Test
-    public void initIoc() {
+    public void getBeanById() {
         // 初始化ioc容器
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring_xml/applicationContext.xml");
-        // 从容器中获取bean
-        User user = applicationContext.getBean(User.class);
+
+        // 1.根据id 从容器中获取bean
+        User user = (User)applicationContext.getBean("user");
         log.info(user.toString());
     }
+
+    @Test
+    public void getBeanByName() {
+        // 初始化ioc容器
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring_xml/applicationContext.xml");
+
+        // 1.根据name 从容器中获取bean
+        User user2 = (User)applicationContext.getBean("user2");
+        User user3 = (User)applicationContext.getBean("user3");
+        log.info(String.valueOf(user2 == user3));
+    }
+
+    @Test
+    public void getBeanByType() {
+        // 初始化ioc容器
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring_xml/applicationContext.xml");
+
+        // 1.根据type 从容器中获取bean
+        User user4 = applicationContext.getBean(User.class);
+        log.info(user4.toString());
+    }
+
+    @Test
+    public void getBeanByNameAndType() {
+        // 初始化ioc容器
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring_xml/applicationContext.xml");
+
+        // 1.根据name和type 从容器中获取bean
+        User user5 = applicationContext.getBean("user2", User.class);
+        log.info(user5.toString());
+    }
+
+    @Test
+    public void getStaticFactoryBeanByIdAndType() {
+        // 初始化ioc容器
+        ApplicationContext applicationContext =
+            new ClassPathXmlApplicationContext("spring_xml/applicationContextFactory.xml");
+
+        // 1.根据id和type 从容器中获取bean
+        User user6 = applicationContext.getBean("factoryUser", User.class);
+        log.info(user6.toString());
+    }
+
+    @Test
+    public void getDynamicFactoryBeanByIdAndType() {
+        // 初始化ioc容器
+        ApplicationContext applicationContext =
+            new ClassPathXmlApplicationContext("spring_xml/applicationContextFactory.xml");
+
+        // 1.根据id和type 从容器中获取bean
+        User user7 = applicationContext.getBean("dynamicFactoryUser", User.class);
+        log.info(user7.toString());
+    }
+
 }
