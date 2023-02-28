@@ -77,4 +77,14 @@ public class IocInitTest {
         log.info(user7.toString());
     }
 
+    @Test
+    public void getBean() {
+        // 初始化ioc容器
+        ApplicationContext applicationContext =
+            new ClassPathXmlApplicationContext("spring_xml/applicationContext_attribute.xml");
+
+        // 1.根据type 从容器中获取bean
+        User user8 = applicationContext.getBean(User.class);
+        log.info(user8.toString());
+    }
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="cat" class="com.kxjiang.java_p5_study.spring_study.spring_xml.Cat" p:nike="花花" p:color="黑色"/>
+
+    <bean id="user" class="com.kxjiang.java_p5_study.spring_study.spring_xml.User">
+        <!--对象类型-->
+        <property name="cat" ref="cat"/>
+        <!--数组类型-->
+        <property name="favorites">
+            <array>
+                <value>篮球</value>
+                <value>爬山</value>
+                <value>逛街</value>
+            </array>
+        </property>
+        <!--集合类型-->
+        <property name="cats">
+            <list>
+                <bean class="com.kxjiang.java_p5_study.spring_study.spring_xml.Cat" p:nike="黑黑" p:color="黑色"/>
+                <bean class="com.kxjiang.java_p5_study.spring_study.spring_xml.Cat" p:nike="白白" p:color="白色"/>
+                <bean class="com.kxjiang.java_p5_study.spring_study.spring_xml.Cat" p:nike="黄黄" p:color="黄色"/>
+            </list>
+        </property>
+        <!--Map类型-->
+        <property name="map">
+            <map>
+                <entry key="user" value-ref="cat"/>
+                <entry key="environment" value-ref="environment"/>
+            </map>
+        </property>
+        <!--Properties类型-->
+        <property name="properties">
+            <props>
+                <prop key="username">root</prop>
+                <prop key="password">123</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
