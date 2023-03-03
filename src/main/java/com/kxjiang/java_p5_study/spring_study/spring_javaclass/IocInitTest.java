@@ -12,11 +12,25 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class IocInitTest {
     @Test
-    public void getBean() {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(
-            "com.kxjiang.java_p5_study.spring_study.spring_javaclass.JavaConfig");
+    public void getBeanByType() {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(JavaConfig.class);
+        User user = applicationContext.getBean(User.class);
+        log.info(user.toString());
+    }
 
-        User user = (User)applicationContext.getBean("user");
+    @Test
+    public void getBeanByName() {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(JavaConfig.class);
+        User user1 = (User)applicationContext.getBean("user1");
+        User user2 = (User)applicationContext.getBean("user2");
+        log.info(user1.toString());
+        log.info(user2.toString());
+    }
+
+    @Test
+    public void getBeanById() {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(JavaConfig.class);
+        User user = (User)applicationContext.getBean("getTestBeanId");
         log.info(user.toString());
     }
 }

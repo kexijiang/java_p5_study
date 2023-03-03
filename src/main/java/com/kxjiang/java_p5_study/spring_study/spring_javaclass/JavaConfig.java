@@ -10,12 +10,22 @@ import org.springframework.context.annotation.Configuration;
 public class JavaConfig {
 
     /**
-     * 注入ioc容器中一个user的bean，与xml文件中的<bean>标签是相同的效果 默认的id是方法名称,也可以显式命名
+     * 注入ioc容器中一个user的bean，与xml文件中的<bean>标签是相同的效果 默认的id是方法名称
      * 
      * @return 返回要注入到ioc容器中的bean
      */
-    @Bean(value = "user", name = {"user1", "user2"})
+    @Bean(name = {"user1", "user2"})
     public User getUser() {
+        return new User();
+    }
+
+    /**
+     * 注入ioc容器中一个user的bean，与xml文件中的<bean>标签是相同的效果 默认的id是方法名称
+     * 
+     * @return 返回要注入到ioc容器中的bean
+     */
+    @Bean
+    public User getTestBeanId() {
         return new User();
     }
 }
