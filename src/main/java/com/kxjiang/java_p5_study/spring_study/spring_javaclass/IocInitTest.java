@@ -1,5 +1,7 @@
 package com.kxjiang.java_p5_study.spring_study.spring_javaclass;
 
+import javax.annotation.Resource;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,10 +13,13 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class IocInitTest {
+
+    @Resource
+
     @Test
     public void getBeanByType() {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(JavaConfig.class);
-        User user = applicationContext.getBean(User.class);
+        User user = applicationContext.getBean("user1", User.class);
         log.info(user.toString());
     }
 
@@ -32,5 +37,12 @@ public class IocInitTest {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(JavaConfig.class);
         User user = (User)applicationContext.getBean("getTestBeanId");
         log.info(user.toString());
+    }
+
+    @Test
+    public void testValue() {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(JavaConfig.class);
+        Environment environment = applicationContext.getBean(Environment.class);
+        log.info(environment.toString());
     }
 }

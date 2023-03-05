@@ -2,11 +2,13 @@ package com.kxjiang.java_p5_study.spring_study.spring_javaclass;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
  * 作者: Jiang 创建时间: 2023/2/28 22:33 描述: java配置类，相当于appcationContext.xml
  */
 @Configuration
+@Import({Person.class, Environment.class})
 public class JavaConfig {
 
     /**
