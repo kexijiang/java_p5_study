@@ -45,4 +45,11 @@ public class IocInitTest {
         Environment environment = applicationContext.getBean(Environment.class);
         log.info(environment.toString());
     }
+
+    @Test
+    public void getBeanConditional() {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(JavaConfig.class);
+        User user = (User)applicationContext.getBean("getUserConditionTest");
+        log.info(user.toString());
+    }
 }
