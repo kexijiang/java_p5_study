@@ -11,17 +11,18 @@ public class JavaConfig {
 
     /**
      * 注入ioc容器中一个user的bean，与xml文件中的<bean>标签是相同的效果 默认的id是方法名称
-     * 
+     *
      * @return 返回要注入到ioc容器中的bean
      */
     @Bean(name = {"user1", "user2"})
+    @Scope("singleton")
     public User getUser() {
         return new User();
     }
 
     /**
      * 注入ioc容器中一个user的bean，与xml文件中的<bean>标签是相同的效果 默认的id是方法名称
-     * 
+     *
      * @return 返回要注入到ioc容器中的bean
      */
     @Bean
